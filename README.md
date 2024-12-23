@@ -13,7 +13,7 @@
 Require the package through composer
 
 ```
-composer require dionera/laravel-beanstalkd-ui
+composer require max_cohen/laravel-beanstalkd-ui
 ```
 
 ### Version Table
