@@ -25,6 +25,11 @@ Route::group(['prefix' => 'beanstalkd/api'], function () {
         'uses' => 'Dionera\BeanstalkdUI\Controllers\Api\JobsController@delete',
     ]);
 
+    Route::get('tubes', [
+        'as' => 'beanstalkd.stats',
+        'uses' => 'Dionera\BeanstalkdUI\Controllers\TubesController@api',
+    ]);
+
     Route::get('tubes/{tube}', [
         'as' => 'beanstalkd.stats',
         'uses' => 'Dionera\BeanstalkdUI\Controllers\Api\StatsController@statsForTube',
