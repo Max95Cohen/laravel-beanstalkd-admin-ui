@@ -16,6 +16,11 @@ class LayoutComposer
 
     public function compose(View $view): void
     {
-        $view->with('tubes', $this->pheanstalk->listTubes());
+        $tubes = collect($this->pheanstalk->listTubes())
+            ->filter(function ($tube) {
+                return $tube != 'default';
+            })->sort();
+
+        $view->with('tubes', $tubes);
     }
 }
