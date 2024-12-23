@@ -45,9 +45,13 @@ class TubesController extends Controller
         return response()->json(['tubes' => $tubes]);
     }
 
-    public function showTube(string $tube): View
+    public function showTube(string $tube)
     {
-        $stats = $this->pheanstalk->statsTube($tube);
+        try {
+            $stats = $this->pheanstalk->statsTube($tube);
+        } catch (\Exception $e) {
+            return abort(404);
+        }
 
         $nextReady = $this->jobs->nextReady($tube, true);
         $nextBuried = $this->jobs->nextBuried($tube);

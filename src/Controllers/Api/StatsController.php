@@ -21,7 +21,11 @@ class StatsController extends Controller
 
     public function statsForTube(string $tube): JsonResponse
     {
-        $tubeStats = $this->pheanstalk->statsTube($tube);
+        try {
+            $tubeStats = $this->pheanstalk->statsTube($tube);
+        } catch (\Exception $e) {
+            return response()->json([], 404);
+        }
 
         $nextReady = $this->jobs->nextReady($tube, true);
         $nextBuried = $this->jobs->nextBuried($tube);
