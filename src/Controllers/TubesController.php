@@ -2,6 +2,8 @@
 
 namespace Dionera\BeanstalkdUI\Controllers;
 
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Illuminate\Routing\Controller;
 use Pheanstalk\Contract\PheanstalkInterface;
@@ -20,16 +22,27 @@ class TubesController extends Controller
 
     public function index(): View
     {
+        $tubes = [];
+
+        return view('beanstalkdui::tubes.index', compact('tubes'));
+    }
+
+    public function api(): JsonResponse
+    {
         $tubeNames = collect($this->pheanstalk->listTubes());
+
+        $tubeNames = $tubeNames->filter(function ($tube) {
+            return $tube != 'default';
+        })->sort();
 
         // Adam Wathan give me your strength!
         $tubes = collect($tubeNames)->map(function ($tube) {
             return collect($this->pheanstalk->statsTube($tube))->slice(1)->all();
         })->zip($tubeNames)->flatMap(function ($pair) {
-            return [$pair[1] => $pair[0]];
+            return [array_merge($pair[0], ['name' => $pair[1]])];
         });
 
-        return view('beanstalkdui::tubes.index', compact('tubes'));
+        return response()->json(['tubes' => $tubes]);
     }
 
     public function showTube(string $tube): View

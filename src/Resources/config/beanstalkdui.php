@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'host' => '127.0.0.1',
+    'host' => env('BEANSTALK_HOST', '127.0.0.1'),
 
     'port' => '11300',
 
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'failed_jobs' => true,
+    'failed_jobs' => false,
 
     'failed_jobs_table' => 'failed_jobs',
 ];
