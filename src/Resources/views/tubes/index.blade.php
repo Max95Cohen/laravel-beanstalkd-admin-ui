@@ -23,14 +23,14 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12" style="float: none">
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Tubes</h2>
                     <div class="clearfix"></div>
                 </div>
 
-                <div class="x_content" id="app">
+                <div class="x_content" id="app" style="overflow: auto">
                     {{-- @include('beanstalkdui::tubes.partials.tube-table') --}}
 
                     <table class="table table-horizontal table-striped" id="tubes">
