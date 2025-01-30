@@ -24,6 +24,19 @@
         "phpunit/phpunit": "^9.5.8",
         "roave/security-advisories": "dev-latest"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Dionera\\BeanstalkdUI\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "pestphp/pest-plugin": true
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -31,13 +44,6 @@
             ]
         }
     },
-    "autoload": {
-        "psr-4": {
-            "Dionera\\BeanstalkdUI\\": "src/"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "post-install-cmd": [
             "@composer normalize"
