@@ -3,14 +3,39 @@
 @section('styles')
     <style type="text/css">
         #tubes i {
-            background-color: #fff;
-            border-radius: 4px;
+            /*background-color: #fff;*/
+            /*border-radius: 4px;*/
             font-style: normal;
-            padding: 4px;
-            transition: background-color .3s ease-out;
+            padding: 4px 0;
+            position: relative;
         }
-        #tubes i.f {
+
+        #tubes i.d:after,
+        #tubes i.u:after {
+            border-radius: 4px;
+            content: '';
+            display: inline-block;
+            height: 16px;
+            left: -14px;
+            margin-left: 2px;
+            opacity: 1;
+            position: absolute;
+            top: 3px;
+            transition: opacity .3s ease-out;
+            width: 10px;
+        }
+
+        #tubes i.d::after {
             background-color: #0f0;
+        }
+
+        #tubes i.u::after {
+            background-color: #d00;
+        }
+
+        #tubes i.h.d:after,
+        #tubes i.h.u:after {
+            opacity: 0;
         }
     </style>
 @endsection
@@ -37,15 +62,15 @@
                         <thead>
                         <tr>
                             <th>Tube</th>
-                            <th>current-jobs-urgent</th>
-                            <th>current-jobs-ready</th>
-                            <th>current-jobs-reserved</th>
-                            <th>current-jobs-delayed</th>
-                            <th>current-jobs-buried</th>
-                            <th>current-using</th>
-                            <th>current-watching</th>
-                            <th>total-jobs</th>
-                            <th>cmd-delete</th>
+                            <th>urgent</th>
+                            <th>ready</th>
+                            <th>reserved</th>
+                            <th>delayed</th>
+                            <th>buried</th>
+                            <th>using</th>
+                            <th>watching</th>
+                            <th>total</th>
+                            <th>deleted</th>
                         </tr>
                         </thead>
 
@@ -76,10 +101,10 @@
                             <td>
                                 <i>@{{ tube['current-watching'] }}</i>
                             </td>
-                            <td>
+                            <td class="jobs">
                                 <i>@{{ tube['total-jobs'] }}</i>
                             </td>
-                            <td>
+                            <td class="deleted">
                                 <i>@{{ tube['cmd-delete'] }}</i>
                             </td>
                         </tr>
