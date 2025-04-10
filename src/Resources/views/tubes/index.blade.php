@@ -3,8 +3,6 @@
 @section('styles')
     <style type="text/css">
         #tubes i {
-            /*background-color: #fff;*/
-            /*border-radius: 4px;*/
             font-style: normal;
             padding: 4px 0;
             position: relative;
@@ -15,18 +13,19 @@
             border-radius: 4px;
             content: '';
             display: inline-block;
-            height: 16px;
-            left: -14px;
+            height: 12px;
+            left: -16px;
             margin-left: 2px;
             opacity: 1;
             position: absolute;
-            top: 3px;
+            top: 0;
             transition: opacity .3s ease-out;
-            width: 10px;
+            width: 12px;
         }
 
         #tubes i.d::after {
             background-color: #0f0;
+            top: 14px;
         }
 
         #tubes i.u::after {
@@ -35,7 +34,7 @@
 
         #tubes i.h.d:after,
         #tubes i.h.u:after {
-            opacity: 0;
+            opacity: .1;
         }
     </style>
 @endsection
