@@ -1,6 +1,6 @@
 var TubeStat = Vue.extend({
     template: '\
-        <div class="col-lg-2 col-sm-4 col-xs-12 tile_stats_count">\
+        <div class="col-lg-2 col-sm-4 col-xs-6 tile_stats_count">\
             <div class="tile-stats">\
                 <div class="icon"><i class="{{ icon }} text-info"></i></div>\
                 <div class="count">{{ value }}</div>\
