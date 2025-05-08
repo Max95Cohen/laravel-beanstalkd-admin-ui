@@ -41,12 +41,6 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Beanstalkd Admin UI</h1>
-        </div>
-    </div>
-
-    <div class="row">
         <div class="col-lg-12" style="float: none">
             <div class="x_panel">
                 <div class="x_title">
@@ -60,7 +54,7 @@
                     <table class="table table-horizontal table-striped" id="tubes">
                         <thead>
                         <tr>
-                            <th>Tube</th>
+                            <th>tube</th>
                             <th>urgent</th>
                             <th>ready</th>
                             <th>reserved</th>
