@@ -11,7 +11,7 @@
 
     <link href="{{ asset('vendor/beanstalkdui/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/beanstalkdui/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/beanstalkdui/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/beanstalkdui/css/custom.min.css?a=1') }}" rel="stylesheet">
     <link href="{{ asset('vendor/beanstalkdui/css/pnotify.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/beanstalkdui/css/pnotify.buttons.css') }}" rel="stylesheet">
 
@@ -21,37 +21,11 @@
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
-
-        @include('beanstalkdui::partials.sidenav')
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu">
-                <nav>
-                    <div class="nav toggle">
-                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <!-- /top navigation -->
-
         <!-- page content -->
         <div class="right_col" role="main">
             @yield('content')
         </div>
         <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-            <div class="pull-right">
-                <a href="https://github.com/Dionera/laravel-beanstalkd-admin-ui">
-                    <i class="fa fa-github"></i> Beanstalkd Admin UI - Github
-                </a>
-            </div>
-            <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
     </div>
 </div>
 
