@@ -8,21 +8,16 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Tube &lt;{{ $tube }}&gt;</h1>
+            <a href="/beanstalkd/tubes">Back</a>
+            <h1 class="page-header">{{ $tube }}</h1>
         </div>
     </div>
 
     <div id="app" tube="{{ $tube }}" prefix="{{ $prefix }}" v-cloak>
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>Overview</h2>
-            </div>
-        </div>
-
         @include('beanstalkdui::tubes.partials.stats_row')
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-xs-12">
                 <h2>Next up</h2>
             </div>
         </div>
@@ -30,8 +25,18 @@
         <div class="row">
             @include('beanstalkdui::tubes.partials.next_ready')
             @include('beanstalkdui::tubes.partials.next_buried')
-            @include('beanstalkdui::tubes.partials.next_delayed')
 
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <b>release: <span class="badge badge-secondary">@{{ nextDelayed['stats']['releases'] }}</span></b>
+                <i>&nbsp;</i>
+                <b>reserves: <span class="badge badge-secondary">@{{ nextDelayed['stats']['reserves'] }}</span></b>
+                <i>&nbsp;</i>
+                <b>age: <span class="badge badge-secondary">@{{ nextDelayed['stats']['age'] }}</span></b>
+                <i>&nbsp;</i>
+                <b>kicks: <span class="badge badge-secondary">@{{ nextDelayed['stats']['kicks'] }}</span></b>
+            </div>
+
+            @include('beanstalkdui::tubes.partials.next_delayed')
         </div>
     </div>
 
